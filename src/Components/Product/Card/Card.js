@@ -1,11 +1,11 @@
 import React from 'react'
 
-let Card = () => (
-    <div>
-        <p>Название товара</p>
-        <p>Количество на складе</p>
-        <p>Цена (р.)</p>
-    </div>
+const Card = ({name, quantity, price}) => (
+     <li>
+         <p>Название товара: {name}</p>
+         <p>Количество на складе: {quantity}</p>
+         <p>Цена (р.): {price}</p>
+    </li>
 )
 
 export default Card;

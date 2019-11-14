@@ -1,12 +1,12 @@
 import React from 'react';
-import {Card} from './Components'
+import {CardList} from './Components'
 
-let App = () => (
+const App = () => (
     <div>
         <h1>
             Hello from app!
         </h1>
-        <Card />
+        <CardList />
     </div>
 
 )
