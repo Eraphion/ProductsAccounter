@@ -1,5 +1,5 @@
-import Card from './Product/Card/Card';
-import CardList from './Product/List/List';
+import Card from './Product/Card/Component';
+import CardList from './Product/List/Component';
 
 export {
     Card,

@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Card/Card'
+import Card from '../Card/Component'
 
 const data = [
     {id: 0, name: "Монитор LG", price: 15000, quantity: 2},
