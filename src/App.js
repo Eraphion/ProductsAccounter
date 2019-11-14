@@ -1,12 +1,13 @@
 import React from 'react';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux'
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 
-import rootReducer from './Reducers';
-import {CardList} from './Components';
+import rootReducer from 'Reducers';
+import {CardList} from 'Components';
 
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => (
     <Provider store={store}>
@@ -17,7 +18,6 @@ const App = () => (
             <CardList />
         </div>
     </Provider>
-
 )
 
 export default App;
