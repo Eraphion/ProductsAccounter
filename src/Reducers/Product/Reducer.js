@@ -1,6 +1,6 @@
 import {DELETE_PRODUCT, DEFAULT} from 'Actions/Types'
 
-const Handlers = (state, {payload}) => ({
+const getHandlers = (state, {payload}) => ({
     [DELETE_PRODUCT]: () => (
         state.filter(item => item.id !== payload)),
     [DEFAULT]: () => state
@@ -13,7 +13,7 @@ const initState = [
 ]
 
 export default (state = initState, action) => {
-   const handlers = Handlers(state,action);
+   const handlers = getHandlers(state,action);
    const handler = handlers[action.type] || handlers[DEFAULT];
    return handler();
 }
