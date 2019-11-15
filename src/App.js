@@ -10,6 +10,7 @@ import {ProductTable, AddProduct, EditProduct} from 'Components';
 import {URLs} from 'Routing';
 import {saveState, loadState, getInitStateIfNoLS} from 'Utils/LocalStorageTool';
 import {InitStore} from 'Actions/Creators';
+import {ProductReducer} from 'Reducers/Naming';
 
 const getInitState = () => {
     let initState = loadState();
@@ -21,7 +22,9 @@ const getInitState = () => {
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 store.subscribe(_.throttle(() => {
-        saveState(store.getState().products); // вложенность полей если передать объект {products: store...}. 
+    saveState({
+        [ProductReducer]: store.getState().products
+    }); 
 }, 500));
 
 

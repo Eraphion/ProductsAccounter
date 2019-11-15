@@ -17,7 +17,7 @@ const getHandlers = (state , {payload}) => ({
                 return item;
         })
     ),
-    [INIT_STORE]: () => payload,
+    [INIT_STORE]: () => payload.products,
     [DEFAULT]: () => state
 })
 
