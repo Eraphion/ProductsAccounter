@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import rootReducer from 'Reducers';
-import {ProductTable, AddProduct} from 'Components';
+import {ProductTable, AddProduct, EditProduct} from 'Components';
 import {URLs} from 'Routing';
 
 
@@ -17,6 +17,7 @@ const App = () => (
             <Switch>
                 <Route path={URLs.PRODUCT_TABLE} component={ProductTable} exact/>
                 <Route path={URLs.ADD_PRODUCT} component={AddProduct} />
+                <Route path={URLs.EDIT_PRODUCT} component={EditProduct} />
             </Switch>
         </BrowserRouter>
     </Provider>
