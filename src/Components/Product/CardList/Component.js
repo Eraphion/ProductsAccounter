@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import {Card} from 'Components';
 
 const CardList = () => {
-    const cardsSrc = useSelector(state => state.product)
+    const cardsSrc = useSelector(state => state.products)
     const cardsToRender = cardsSrc.map(card => (
         <Card key={card.id} {...card}/>
     ))

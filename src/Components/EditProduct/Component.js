@@ -1,5 +1,6 @@
 import React from 'react';
 import {useHistory, useParams} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 import {getNavigation} from 'Routing';
 
@@ -7,6 +8,8 @@ const EditProduct = () => {
     const {toProductTable} = getNavigation(useHistory());
     const editNameId = "EditProductName";
     const {id} = useParams();
+    const productCard = useSelector(state => state.products).filter(product => product.id === id);
+    console.log(productCard);
     return (
         <div>
             <p>Меню редактирования товара</p>
