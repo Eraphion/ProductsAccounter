@@ -1,4 +1,4 @@
-import {DELETE_PRODUCT, EDIT_PRODUCT} from 'Actions/Types' // Could not find a declaration (hint on hover) but it works and it should work...
+import {DELETE_PRODUCT, EDIT_PRODUCT} from 'Actions/Types' 
 
 export const DeleteProduct = id => dispatch => {
     dispatch({

@@ -5,9 +5,13 @@ import {useState} from 'react';
 
 import {getNavigation} from 'Routing';
 import {EditProduct as EditProductAction} from 'Actions/Creators';
+import {InputNotNegative, InputNotEmpty, InputPositiveOnly} from "Utils/InputChecker";
 
 const EditProduct = () => {
     const editNameId = "EditProductName";
+    const editQuantityId = "EditQuantityName";
+    const editPriceId = "EditPriceName";
+    const editDescriptionId = "EditDescriptionName";
     const {toProductTable} = getNavigation(useHistory());
 
     const {id} = useParams(); // it is a string
@@ -22,6 +26,7 @@ const EditProduct = () => {
 
     const dispatch = useDispatch();
     const editProduct = () => dispatch(EditProductAction({
+        ...productCard,
         name: newName,
         quantity: newQuantity,
         price: newPrice,
@@ -30,6 +35,7 @@ const EditProduct = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
+        editProduct();
         toProductTable();
     }
 
@@ -37,8 +43,18 @@ const EditProduct = () => {
         <div>
             <p>Меню редактирования товара</p>
             <form onSubmit={submitForm}>
-                <label htmlFor={editNameId}></label>
-                <input id={editNameId} value={newName} onChange={(e) => setNewName(e.target.value)}></input>
+                <label htmlFor={editNameId}>Название: </label>
+                <input id={editNameId} value={newName} onChange={(e) => InputNotEmpty(e, setNewName)}></input>
+
+                <label htmlFor={editQuantityId}>На складе: </label>
+                <input id={editQuantityId} value={newQuantity} onChange={(e) => InputNotNegative(e, setNewQuantity)}></input>
+
+                <label htmlFor={editPriceId}>Цена (р.): </label>
+                <input id={editPriceId} value={newPrice} onChange={(e) => InputPositiveOnly(e, setNewPrice)}></input>
+
+                <label htmlFor={editDescriptionId}>Описание: </label>
+                <input id={editDescriptionId} value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></input> 
+
                 <button type="submit">Подтвердить</button>
                 <button onClick={toProductTable}>Отменить</button>
             </form>
