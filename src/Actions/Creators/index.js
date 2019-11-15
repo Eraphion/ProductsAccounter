@@ -1,5 +1,6 @@
-import {DeleteProduct} from './Product/Actions';
+import {DeleteProduct, EditProduct} from './Product/Actions';
 
 export {
-    DeleteProduct
+    DeleteProduct,
+    EditProduct
 }
