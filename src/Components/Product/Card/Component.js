@@ -5,9 +5,11 @@ import {useHistory} from 'react-router-dom';
 import {DeleteProduct} from 'Actions/Creators';
 import {getNavigation} from 'Routing'
 
-const Card = ({name, quantity, price, description,id}) => {
+const Product = ({name, quantity, price, id}) => {
     const dispatch = useDispatch();
-    const {toEditProduct} = getNavigation(useHistory());
+    const history = useHistory();
+    const {toEditProduct} = getNavigation(history);
+    const {toViewProduct} = getNavigation(history);
     const deleteProduct = () => dispatch(DeleteProduct(id));
     
     return (
@@ -16,9 +18,9 @@ const Card = ({name, quantity, price, description,id}) => {
                 <p>Товар: {name}</p>
                 <p>Осталось на складе: {quantity}</p>
                 <p>Стоимость (р.): {price}</p>
-                <p>Дополнительные сведения: {description}</p>
             </div>
             <div className="buttons">
+                <button onClick={() => toViewProduct(id)}>Подробнее</button>
                 <button onClick={() => toEditProduct(id)}>Редактировать товар</button>
                 <button onClick={deleteProduct}>Удалить товар</button>
             </div>
@@ -26,4 +28,4 @@ const Card = ({name, quantity, price, description,id}) => {
     );
 }
 
-export default Card;
+export default Product;

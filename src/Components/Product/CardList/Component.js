@@ -1,19 +1,19 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 
-import {Card} from 'Components';
+import {Product} from 'Components';
 
 const CardList = ({isFiltered, filterName}) => {
-    const cardsSrc = useSelector(state => state.products)
-    if (!cardsSrc)
+    const productsSource = useSelector(state => state.products)
+    if (!productsSource)
         return <div>Подождите, данные загружаются...</div>
         
-    const cardsToRender = cardsSrc.map(card => {
+    const cardsToRender = productsSource.map(card => {
         if (isFiltered === true && 
             !card.name.toLowerCase().includes(filterName.toLowerCase()))
             return null;
         else 
-            return <Card key={card.id} {...card}/>
+            return <Product key={card.id} {...card}/>
     })
 
     return (

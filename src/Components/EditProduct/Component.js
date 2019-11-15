@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
-import {useState} from 'react';
 
 import {getNavigation} from 'Routing';
 import {EditProduct as EditProductAction} from 'Actions/Creators';
 import {InputNotNegative, InputNotEmpty, InputPositiveOnly} from "Utils/InputChecker";
+import {ProductReducer} from 'Reducers/Naming';
 
 const EditProduct = () => {
     const editNameId = "EditProductName";
@@ -15,7 +15,7 @@ const EditProduct = () => {
     const {toProductTable} = getNavigation(useHistory());
 
     const {id} = useParams(); // it is a string
-    const productCard = useSelector(state => state.products).find(product => product.id === parseInt(id));
+    const productCard = useSelector(state => state[ProductReducer]).find(product => product.id === parseInt(id));
 
     const {name, quantity, price, description} = productCard;
     const [newName, setNewName] = useState(name)

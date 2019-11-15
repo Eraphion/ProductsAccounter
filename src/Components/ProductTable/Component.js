@@ -2,7 +2,7 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import {useState} from 'react';
 
-import {CardList} from 'Components';
+import {ProductList} from 'Components';
 import {getNavigation} from 'Routing';
 
 const ProductTable = () => {
@@ -24,7 +24,7 @@ const filterOptions = {isFiltered, filterName};
 
                 <input type="checkbox" value={isFiltered} onClick={() => setFiltered(!isFiltered)}></input>
             </div>
-            <CardList {...filterOptions}/>
+            <ProductList {...filterOptions}/>
             <button onClick={toAddProduct}>Добавить товар</button>
         </div>
     );

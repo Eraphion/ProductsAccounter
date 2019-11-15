@@ -6,7 +6,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import _ from 'lodash';
 
 import rootReducer from 'Reducers';
-import {ProductTable, AddProduct, EditProduct} from 'Components';
+import {ProductTable, AddProduct, EditProduct, DetailedProduct} from 'Components';
 import {URLs} from 'Routing';
 import {saveState, loadState, getInitStateIfNoLS} from 'Utils/LocalStorageTool';
 import {InitStore} from 'Actions/Creators';
@@ -40,6 +40,7 @@ const App = () => {
                     <Route path={URLs.PRODUCT_TABLE} component={ProductTable} exact/>
                     <Route path={URLs.ADD_PRODUCT} component={AddProduct} />
                     <Route path={URLs.EDIT_PRODUCT} component={EditProduct} />
+                    <Route path={URLs.VIEW_PRODUCT} component={DetailedProduct} />
                 </Switch>
             </BrowserRouter>
         </Provider>
