@@ -1,6 +1,7 @@
-import {DELETE_PRODUCT, EDIT_PRODUCT, DEFAULT} from 'Actions/Types'
+import {DELETE_PRODUCT, EDIT_PRODUCT, INIT_STORE, DEFAULT} from 'Actions/Types';
+import SharedReducer from 'Utils/SharedReducer';
 
-const getHandlers = (state, {payload}) => ({
+const getHandlers = (state , {payload}) => ({
     [DELETE_PRODUCT]: () => (
         state.filter(item => item.id !== payload)),
     [EDIT_PRODUCT]: () => (
@@ -16,17 +17,8 @@ const getHandlers = (state, {payload}) => ({
                 return item;
         })
     ),
+    [INIT_STORE]: () => payload,
     [DEFAULT]: () => state
 })
 
-const initState = [
-    {id: 0, name: "Монитор LG", price: 15000, quantity: 2, description: "IPS монитор с диагональю 17 дюймов"},
-    {id: 1, name: "Телефон Huawei", price: 20000, quantity: 1,description: "8 ядерный SoC A-55 с диагональю 5.7 дюймов"},
-    {id: 2, name: "Клавиатура Logitech", price: 2000, quantity: 3,description: "Обладает яркой и настраиваемой RGB-подсветкой"}
-]
-
-export default (state = initState, action) => {
-   const handlers = getHandlers(state,action);
-   const handler = handlers[action.type] || handlers[DEFAULT];
-   return handler();
-}
+export default SharedReducer(getHandlers);

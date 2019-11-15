@@ -1,26 +1,45 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import _ from 'lodash';
 
 import rootReducer from 'Reducers';
 import {ProductTable, AddProduct, EditProduct} from 'Components';
 import {URLs} from 'Routing';
+import {saveState, loadState, getInitStateIfNoLS} from 'Utils/LocalStorageTool';
+import {InitStore} from 'Actions/Creators';
 
+const getInitState = () => {
+    let initState = loadState();
+    if(!initState) {
+       initState = getInitStateIfNoLS();
+    }
+    return initState;
+}
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
+store.subscribe(_.throttle(() => {
+        saveState(store.getState().products); // вложенность полей если передать объект {products: store...}. 
+}, 500));
 
-const App = () => (
-    <Provider store={store}>
-        <BrowserRouter>
-            <Switch>
-                <Route path={URLs.PRODUCT_TABLE} component={ProductTable} exact/>
-                <Route path={URLs.ADD_PRODUCT} component={AddProduct} />
-                <Route path={URLs.EDIT_PRODUCT} component={EditProduct} />
-            </Switch>
-        </BrowserRouter>
-    </Provider>
-)
+
+const App = () => {
+    useEffect(() => {
+        store.dispatch(InitStore(getInitState()));
+    }, []);
+
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <Switch>
+                    <Route path={URLs.PRODUCT_TABLE} component={ProductTable} exact/>
+                    <Route path={URLs.ADD_PRODUCT} component={AddProduct} />
+                    <Route path={URLs.EDIT_PRODUCT} component={EditProduct} />
+                </Switch>
+            </BrowserRouter>
+        </Provider>
+    )};
 
 export default App;
