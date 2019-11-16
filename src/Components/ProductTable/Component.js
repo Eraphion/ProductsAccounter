@@ -25,10 +25,19 @@ const filterOptions = {isFiltered, filterName};
                         onChange={(e) => setFilterName(e.target.value)}
                     ></input>
                 </div>
-                <label><input type="checkbox" value={isFiltered} onClick={() => setFiltered(!isFiltered)}></input><span>Применить</span></label>
+                <label>
+                    <input 
+                        type="checkbox" 
+                        value={isFiltered} 
+                        onClick={() => setFiltered(!isFiltered)}>
+                    </input>
+                    <span className="highlight">Применить</span>
+                </label>
             </div>
             <ProductList {...filterOptions}/>
-            <button onClick={toAddProduct}>Добавить товар</button>
+            <div className="horizontalAlign"> 
+                <button className="btn btn-larger indigo mgbottom-20" onClick={toAddProduct}>Добавить товар</button>
+            </div>
         </div>
     );
 }

@@ -6,3 +6,14 @@
     flex-shrink: 0;
     margin-right: 50px;
 }
+.highlight {
+    color: black;
+    font-weight: bold;
+}
+.horizontalAlign {
+    display: flex;
+    justify-content: center;
+}
+.mgbottom-20 {
+    margin-bottom: 20px;
+}
