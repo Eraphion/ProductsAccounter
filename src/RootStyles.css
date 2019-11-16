@@ -1,6 +1,6 @@
 #root {
     background-color: rgb(180, 173, 173);
-    min-height: 100vh;
+    min-height: 70vh; /* to-do: fix issue with vertial scroll*/
     border: 0;
     padding: 0;
     box-sizing: border-box;

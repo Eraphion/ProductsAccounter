@@ -4,6 +4,8 @@ import {useSelector} from 'react-redux';
 
 import {getNavigation} from 'Routing';
 import {ProductReducer} from 'Reducers/Naming';
+// eslint-disable-next-line no-unused-vars
+import _ from './Style.css';
 
 const DetailedProduct = () => {
     const {toProductTable} = getNavigation(useHistory());
@@ -22,20 +24,25 @@ const DetailedProduct = () => {
     ));
 
     return (
-        <div>
-            <div className="productInfo">
-                <p>Товар: {name}</p>
-                <p>Осталось на складе: {quantity}</p>
-                <p>Стоимость (р.): {price}</p>
-                <p>Особенности: {description}</p>
+        <div className="card grey lighten-2 mxwidth-1200 centered">
+            <div className="card-content flexColumns">
+                <div className="productDescription">
+                    <p>Товар: {name}</p>
+                    <p>Осталось на складе: {quantity}</p>
+                    <p>Стоимость (р.): {price}</p>
+                    <p>Особенности: {description}</p>
+                </div>
+
+                <div className="productPrice">
+                    <p className="highlight">История цены:</p>
+                    <ul className="priceHistory">
+                        {historyToRender}
+                    </ul>
+                </div>
             </div>
-            <div className="productPrice">
-                <p>История цены:</p>
-                <ul className="priceHistory">
-                    {historyToRender}
-                </ul>
+            <div className="card-action rightButtons">
+                <button className="btn" onClick={toProductTable}>Вернуться</button>
             </div>
-            <button onClick={toProductTable}>Вернуться</button>
         </div>
     );
 }
