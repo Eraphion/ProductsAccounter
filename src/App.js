@@ -4,6 +4,8 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import _ from 'lodash';
+// eslint-disable-next-line no-unused-vars
+import __ from './RootStyles.css';
 
 import rootReducer from 'Reducers';
 import {ProductTable, AddProduct, EditProduct, DetailedProduct} from 'Components';
@@ -34,18 +36,16 @@ const App = () => {
     }, []);
 
     return (
-        <div className="grey lighten-1">
-            <Provider store={store} classNames="grey">
-                <BrowserRouter>
-                    <Switch>
-                        <Route path={URLs.PRODUCT_TABLE} component={ProductTable} exact/>
-                        <Route path={URLs.ADD_PRODUCT} component={AddProduct} />
-                        <Route path={URLs.EDIT_PRODUCT} component={EditProduct} />
-                        <Route path={URLs.VIEW_PRODUCT} component={DetailedProduct} />
-                    </Switch>
-                </BrowserRouter>
-            </Provider>
-        </div>
+         <Provider store={store} classNames="grey">
+            <BrowserRouter>
+                <Switch>
+                     <Route path={URLs.PRODUCT_TABLE} component={ProductTable} exact/>
+                     <Route path={URLs.ADD_PRODUCT} component={AddProduct} />
+                     <Route path={URLs.EDIT_PRODUCT} component={EditProduct} />
+                     <Route path={URLs.VIEW_PRODUCT} component={DetailedProduct} />
+                </Switch>
+            </BrowserRouter>
+         </Provider>
     )};
 
 export default App;

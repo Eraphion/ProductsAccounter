@@ -1,0 +1,10 @@
+.mxwidth-1200 {
+    max-width: 1200px;
+}
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+.textCentered {
+    text-align: center;
+}
