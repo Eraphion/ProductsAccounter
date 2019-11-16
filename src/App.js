@@ -23,7 +23,7 @@ const getInitState = () => {
 const store = createStore(rootReducer, applyMiddleware(thunk));
 store.subscribe(_.throttle(() => {
     saveState({
-        [ProductReducer]: store.getState().products
+        [ProductReducer]: store.getState()[ProductReducer]
     }); 
 }, 500));
 
