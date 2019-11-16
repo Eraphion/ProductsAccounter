@@ -40,23 +40,27 @@ const EditProduct = () => {
     }
 
     return (
-        <div>
-            <p>Меню редактирования товара</p>
+        <div className="card mxwidth-1200 centered">
+            <p className="highlight textCentered">Меню редактирования товара</p>
             <form onSubmit={submitForm}>
-                <label htmlFor={editNameId}>Название: </label>
-                <input id={editNameId} value={newName} onChange={(e) => InputNotEmpty(e, setNewName)}></input>
+                <div className="card-content">
+                    <label htmlFor={editNameId}>Название: </label>
+                    <input id={editNameId} value={newName} onChange={(e) => InputNotEmpty(e, setNewName)}></input>
 
-                <label htmlFor={editQuantityId}>На складе: </label>
-                <input id={editQuantityId} value={newQuantity} onChange={(e) => InputNotNegative(e, setNewQuantity)}></input>
+                    <label htmlFor={editQuantityId}>На складе: </label>
+                    <input id={editQuantityId} value={newQuantity} onChange={(e) => InputNotNegative(e, setNewQuantity)}></input>
 
-                <label htmlFor={editPriceId}>Цена (р.): </label>
-                <input id={editPriceId} value={newPrice} onChange={(e) => InputPositiveOnly(e, setNewPrice)}></input>
+                    <label htmlFor={editPriceId}>Цена (р.): </label>
+                    <input id={editPriceId} value={newPrice} onChange={(e) => InputPositiveOnly(e, setNewPrice)}></input>
 
-                <label htmlFor={editDescriptionId}>Описание: </label>
-                <input id={editDescriptionId} value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></input> 
+                    <label htmlFor={editDescriptionId}>Описание: </label>
+                    <input id={editDescriptionId} value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></input> 
+                </div>
 
-                <button type="submit">Подтвердить</button>
-                <button onClick={toProductTable}>Отменить</button>
+                <div className="card-action rightButtons">
+                    <button className="btn mgright-20" type="submit">Подтвердить</button>
+                    <button className="btn grey" onClick={toProductTable}>Отменить</button>
+                </div>
             </form>
         </div>
     )
