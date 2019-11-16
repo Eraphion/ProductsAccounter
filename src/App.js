@@ -34,16 +34,18 @@ const App = () => {
     }, []);
 
     return (
-        <Provider store={store}>
-            <BrowserRouter>
-                <Switch>
-                    <Route path={URLs.PRODUCT_TABLE} component={ProductTable} exact/>
-                    <Route path={URLs.ADD_PRODUCT} component={AddProduct} />
-                    <Route path={URLs.EDIT_PRODUCT} component={EditProduct} />
-                    <Route path={URLs.VIEW_PRODUCT} component={DetailedProduct} />
-                </Switch>
-            </BrowserRouter>
-        </Provider>
+        <div className="grey lighten-1">
+            <Provider store={store} classNames="grey">
+                <BrowserRouter>
+                    <Switch>
+                        <Route path={URLs.PRODUCT_TABLE} component={ProductTable} exact/>
+                        <Route path={URLs.ADD_PRODUCT} component={AddProduct} />
+                        <Route path={URLs.EDIT_PRODUCT} component={EditProduct} />
+                        <Route path={URLs.VIEW_PRODUCT} component={DetailedProduct} />
+                    </Switch>
+                </BrowserRouter>
+            </Provider>
+        </div>
     )};
 
 export default App;

@@ -17,7 +17,7 @@ const CardList = ({isFiltered, filterName}) => {
     })
 
     return (
-        <ul>
+        <ul className="container">
             {cardsToRender}
         </ul>)
 }

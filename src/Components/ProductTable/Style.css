@@ -1,0 +1,8 @@
+.filterField {
+    display: flex;
+    align-items: baseline;
+}
+.filterAlert {
+    flex-shrink: 0;
+    margin-right: 50px;
+}
