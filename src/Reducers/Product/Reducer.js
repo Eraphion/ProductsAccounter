@@ -1,4 +1,4 @@
-import {DELETE_PRODUCT, EDIT_PRODUCT, INIT_STORE, DEFAULT} from 'Actions/Types';
+import {DELETE_PRODUCT, EDIT_PRODUCT, INIT_STORE, ADD_QUANTITY, DEFAULT} from 'Actions/Types';
 import {ProductReducer} from 'Reducers/Naming';
 import SharedReducer from 'Utils/SharedReducer';
 import { getDate } from 'Utils/DateParser';
@@ -13,7 +13,7 @@ const getHandlers = (state , {payload}) => ({
         state.filter(product => product.id !== payload)),
     [EDIT_PRODUCT]: () => (
         state.map(product => {
-            if(product.id === payload.id) {
+            if (product.id === payload.id) {
                 const {name, price, quantity,description, priceHistory} = payload;
                 if (price !== priceHistory[priceHistory.length-1].price)
                     priceHistory.push(createPriceHistory(price));
@@ -26,6 +26,14 @@ const getHandlers = (state , {payload}) => ({
                 return product;
         })
     ),
+    [ADD_QUANTITY]: () => state.map(product => {
+        if (product.id !== payload.id)
+            return product;
+        else return ({
+            ...product,
+            quantity: product.quantity + payload.addedQuantity
+        })
+    }),
     [INIT_STORE]: () => payload[ProductReducer].map(product => {
         if (!product.priceHistory)
              product.priceHistory = [createPriceHistory(product.price)];

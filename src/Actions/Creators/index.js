@@ -1,8 +1,9 @@
-import {DeleteProduct, EditProduct} from './Product/Actions';
+import {DeleteProduct, EditProduct, AddQuantity} from './Product/Actions';
 import {InitStore} from './InitStore/Actions';
 
 export {
     InitStore,
     DeleteProduct,
-    EditProduct
+    EditProduct,
+    AddQuantity
 }

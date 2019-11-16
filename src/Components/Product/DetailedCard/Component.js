@@ -16,7 +16,7 @@ const DetailedProduct = () => {
     let productCard = products.find(product => product.id === parseInt(id));
     const {name, quantity, price, description, priceHistory} = productCard;
     const historyToRender = priceHistory.map(priceStamp => (
-        <li>
+        <li key={priceStamp.date}>
             <span>Цена составляла {priceStamp.price} на момент {priceStamp.date}</span>
         </li>
     ));
